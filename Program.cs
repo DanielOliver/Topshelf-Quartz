@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Timers;
+using Serilog;
 using Topshelf;
 
 namespace quartz_topshelf
@@ -17,6 +18,13 @@ namespace quartz_topshelf
                     s.WhenStopped(tc => tc.Stop());
                 });
                 x.RunAsLocalSystem();
+
+                Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Information()
+                    .WriteTo.Console()
+                    .WriteTo.File("logs\\myapp.txt", rollingInterval: RollingInterval.Day)
+                    .CreateLogger();
+                x.UseSerilog(Log.Logger);
 
                 x.SetDescription("Sample Topshelf Host");
                 x.SetDisplayName("Stuff");

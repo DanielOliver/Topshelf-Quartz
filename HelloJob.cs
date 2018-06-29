@@ -5,6 +5,7 @@ using Quartz;
 using System.Collections.Specialized;
 using Quartz.Impl;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace quartz_topshelf
 {
@@ -12,7 +13,9 @@ namespace quartz_topshelf
     {
         public Task Execute(IJobExecutionContext context)
         {
-            return Console.Out.WriteLineAsync($"Greetings from HelloJob!   Previous run: {context.PreviousFireTimeUtc?.DateTime.ToString() ?? string.Empty}");
+            var nextRun = context.PreviousFireTimeUtc?.DateTime.ToString() ?? string.Empty;
+            Log.Information("Greetings from HelloJob!   Previous run: {nextRun}", nextRun);
+            return Task.CompletedTask;
         }
     }
 }
