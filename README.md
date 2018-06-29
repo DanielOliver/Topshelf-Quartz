@@ -1,4 +1,4 @@
-# Quartz + Topshelf
+# Quartz + Topshelf + Serilog
 
 A simple example of using Quartz inside Topshelf with Serilog.
 
