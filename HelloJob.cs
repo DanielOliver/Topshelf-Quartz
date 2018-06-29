@@ -12,7 +12,7 @@ namespace quartz_topshelf
     {
         public Task Execute(IJobExecutionContext context)
         {
-            return Console.Out.WriteLineAsync("Greetings from HelloJob!");
+            return Console.Out.WriteLineAsync($"Greetings from HelloJob!   Previous run: {context.PreviousFireTimeUtc?.DateTime.ToString() ?? string.Empty}");
         }
     }
 }

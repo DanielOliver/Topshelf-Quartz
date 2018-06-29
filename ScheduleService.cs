@@ -7,7 +7,7 @@ using Quartz.Impl;
 
 namespace quartz_topshelf
 {
-    public class ScheduleService: IDisposable
+    public class ScheduleService : IDisposable
     {
         private readonly IScheduler scheduler;
 
@@ -31,9 +31,15 @@ namespace quartz_topshelf
             }
         }
 
-        public void Start() {
+        public void Start()
+        {
             scheduler.Start().ConfigureAwait(false).GetAwaiter().GetResult();
-            
+
+            Build();
+        }
+
+        public void Build()
+        {
             IJobDetail job = JobBuilder.Create<HelloJob>()
                 .WithIdentity("job1", "group1")
                 .Build();
@@ -49,8 +55,9 @@ namespace quartz_topshelf
             // Tell quartz to schedule the job using our trigger
             scheduler.ScheduleJob(job, trigger).ConfigureAwait(false).GetAwaiter().GetResult();
         }
-        
-        public void Stop() {
+
+        public void Stop()
+        {
         }
 
         #region IDisposable Support
@@ -60,7 +67,8 @@ namespace quartz_topshelf
         {
             if (!disposedValue)
             {
-                if (disposing) {
+                if (disposing)
+                {
                     scheduler.Shutdown().Wait();
                 }
                 disposedValue = true;
