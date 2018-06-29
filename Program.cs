@@ -2,6 +2,7 @@
 using System.Timers;
 using Serilog;
 using Topshelf;
+using System.IO;
 
 namespace quartz_topshelf
 {
@@ -22,7 +23,7 @@ namespace quartz_topshelf
                 Log.Logger = new LoggerConfiguration()
                     .MinimumLevel.Information()
                     .WriteTo.Console()
-                    .WriteTo.File("logs\\myapp.txt", rollingInterval: RollingInterval.Day)
+                    .WriteTo.File($"{Path.GetTempPath()}logs\\myapp.txt", rollingInterval: RollingInterval.Day)
                     .CreateLogger();
                 x.UseSerilog(Log.Logger);
 
