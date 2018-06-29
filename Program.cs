@@ -27,9 +27,9 @@ namespace quartz_topshelf
                     .CreateLogger();
                 x.UseSerilog(Log.Logger);
 
-                x.SetDescription("Sample Topshelf Host");
-                x.SetDisplayName("Stuff");
-                x.SetServiceName("Stuff");
+                x.SetDescription("Topshelf with Quartz and Serilog");
+                x.SetDisplayName("Topshelf with Quartz");
+                x.SetServiceName("Topshelf-Quartz");
             });
 
             var exitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
