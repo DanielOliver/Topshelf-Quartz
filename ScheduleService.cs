@@ -13,32 +13,25 @@ namespace quartz_topshelf
 
         public ScheduleService()
         {
-            try
+            NameValueCollection props = new NameValueCollection
             {
-                NameValueCollection props = new NameValueCollection
-                {
-                    { "quartz.serializer.type", "binary" },
-                    { "quartz.scheduler.instanceName", "MyScheduler" },
-                    { "quartz.jobStore.type", "Quartz.Simpl.RAMJobStore, Quartz" },
-                    { "quartz.threadPool.threadCount", "3" }
-                };
-                StdSchedulerFactory factory = new StdSchedulerFactory(props);
-                scheduler = factory.GetScheduler().ConfigureAwait(false).GetAwaiter().GetResult();
-            }
-            catch (SchedulerException se)
-            {
-                Console.WriteLine(se);
-            }
+                { "quartz.serializer.type", "binary" },
+                { "quartz.scheduler.instanceName", "MyScheduler" },
+                { "quartz.jobStore.type", "Quartz.Simpl.RAMJobStore, Quartz" },
+                { "quartz.threadPool.threadCount", "3" }
+            };
+            StdSchedulerFactory factory = new StdSchedulerFactory(props);
+            scheduler = factory.GetScheduler().ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         public void Start()
         {
             scheduler.Start().ConfigureAwait(false).GetAwaiter().GetResult();
 
-            Build();
+            ScheduleJobs();
         }
 
-        public void Build()
+        public void ScheduleJobs()
         {
             IJobDetail job = JobBuilder.Create<HelloJob>()
                 .WithIdentity("job1", "group1")
