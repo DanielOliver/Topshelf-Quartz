@@ -51,7 +51,7 @@ namespace quartz_topshelf
 
         public void Stop()
         {
-            scheduler.Shutdown().Wait();
+            scheduler.Shutdown().ConfigureAwait(false).GetAwaiter().GetResult();
         }
     }
 }
