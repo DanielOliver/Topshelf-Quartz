@@ -13,8 +13,8 @@ namespace quartz_topshelf
     {
         public Task Execute(IJobExecutionContext context)
         {
-            var nextRun = context.PreviousFireTimeUtc?.DateTime.ToString() ?? string.Empty;
-            Log.Warning("Greetings from HelloJob!   Previous run: {nextRun}", nextRun);
+            var lastRun = context.PreviousFireTimeUtc?.DateTime.ToString() ?? string.Empty;
+            Log.Warning("Greetings from HelloJob!   Previous run: {lastRun}", lastRun);
             return Task.CompletedTask;
         }
     }
