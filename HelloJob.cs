@@ -14,7 +14,7 @@ namespace quartz_topshelf
         public Task Execute(IJobExecutionContext context)
         {
             var nextRun = context.PreviousFireTimeUtc?.DateTime.ToString() ?? string.Empty;
-            Log.Information("Greetings from HelloJob!   Previous run: {nextRun}", nextRun);
+            Log.Warning("Greetings from HelloJob!   Previous run: {nextRun}", nextRun);
             return Task.CompletedTask;
         }
     }
