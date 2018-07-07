@@ -15,4 +15,8 @@
     <PackageReference Include="Topshelf.serilog" Version="4.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\quartz_service\quartz_service.csproj" />
+  </ItemGroup>
+
 </Project>

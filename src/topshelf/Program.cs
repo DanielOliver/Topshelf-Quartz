@@ -3,6 +3,7 @@ using System.Timers;
 using Serilog;
 using Topshelf;
 using System.IO;
+using quartz_service;
 
 namespace quartz_topshelf
 {

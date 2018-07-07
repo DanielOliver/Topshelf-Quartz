@@ -1,11 +1,10 @@
 using System;
 using System.Timers;
-using Topshelf;
 using Quartz;
 using System.Collections.Specialized;
 using Quartz.Impl;
 
-namespace quartz_topshelf
+namespace quartz_service
 {
     public class ScheduleService
     {

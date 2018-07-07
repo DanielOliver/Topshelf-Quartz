@@ -1,13 +1,12 @@
 using System;
 using System.Timers;
-using Topshelf;
 using Quartz;
 using System.Collections.Specialized;
 using Quartz.Impl;
 using System.Threading.Tasks;
 using Serilog;
 
-namespace quartz_topshelf
+namespace quartz_service
 {
     public class HelloJob : IJob
     {
