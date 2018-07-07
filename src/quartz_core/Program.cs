@@ -13,7 +13,7 @@ namespace quartz_core
         {
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
-                .WriteTo.Console()
+                // .WriteTo.Console()
                 .WriteTo.File($"logs/myapp.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
@@ -24,7 +24,7 @@ namespace quartz_core
             Console.CancelKeyPress += CancelHandler;
 
             while (true) {
-                System.Console.ReadKey();                
+                System.Console.Read();                
             };
         }
 

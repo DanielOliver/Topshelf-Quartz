@@ -1,0 +1,6 @@
+[Unit]
+Description=.NET Core quartz job runner
+
+[Service]
+ExecStart=/bin/dotnet /srv/service/quartz_core/bin/Release/netcoreapp2.1/publish/quartz_core.dll
+WorkingDirectory=/srv/service/quartz_core/bin/Release/netcoreapp2.1/publish
