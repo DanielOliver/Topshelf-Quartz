@@ -2,7 +2,7 @@
 
 A simple example of using Quartz inside Topshelf with Serilog.
 
-## Quickstart
+## Quickstart Windows
 
 ```powershell
 dotnet restore
@@ -18,19 +18,15 @@ Uninstall
 .\quartz-topshelf.exe uninstall
 ```
 
-### Notes:
+### Notes
 
 * Logs are saved to "%TEMP%/logs/myapp.txt"
 
-
-### Original Project Creation
+## Quickstart Linux
 
 ```powershell
-dotnet new console --target-framework-override net461
-dotnet add package Quartz
-dotnet add package Serilog
-dotnet add package Serilog.Sinks.Console
-dotnet add package Serilog.Sinks.File
-dotnet add package Topshelf
-dotnet add package Topshelf.serilog
+vagrant up
+vagrant plugin install vagrant-vbguest
+vagrant reload
+vagrant ssh
 ```

@@ -1,8 +1,8 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "centos/7"
-
-  config.vm.synced_folder "src/", "/srv/service"
+  config.vm.hostname = "quartztesting"
+  config.vm.synced_folder "src/", "/srv/service", type: "virtualbox"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -53,8 +53,9 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+    sudo yum update
+    sudo yum install dotnet-sdk-2.1
+  SHELL
 end
