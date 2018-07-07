@@ -13,7 +13,6 @@ namespace quartz_core
         {
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
-                // .WriteTo.Console()
                 .WriteTo.File($"logs/myapp.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
@@ -27,13 +26,11 @@ namespace quartz_core
                 System.Console.Read();                
             };
         }
-
         private static void SigTermEventHandler(AssemblyLoadContext obj)
         {
             Log.Information("Unloading...");
             _service.Stop();
         }
-
         private static void CancelHandler(object sender, ConsoleCancelEventArgs e)
         {	     
             Log.Information("Exiting...");
