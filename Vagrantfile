@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
-    sudo yum update
-    sudo yum install dotnet-sdk-2.1
+    sudo yum -y update
+    sudo yum -y install dotnet-sdk-2.1
   SHELL
 end
