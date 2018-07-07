@@ -1,8 +1,8 @@
-﻿using System;
-using System.Timers;
-using Serilog;
-using Topshelf;
+﻿using Serilog;
+using System;
 using System.IO;
+using System.Timers;
+using Topshelf;
 using quartz_service;
 
 namespace quartz_topshelf
